@@ -79,31 +79,31 @@ document.getElementsByClassName('account')[0].innerHTML = output
 
 
 */
-class Person {
-    constructor(fullName, accountNumber) {
+class Person {                  // tworzę klasę Person
+    constructor(fullName, accountNumber) {          // kosntruktorem nadaje im fullName i accountNumber z parametru (przy tworzseniu nowcyh person bede im w parametrze nadawal fullName i accountNumber)
         this._fullName = fullName;
         this._accountNumber = accountNumber;
     }
-    get fullName() {
-        return this._fullName;
+    get fullName() {                                // to jest getter klasy Person ktory zwraca full name np. console ---> person1.fullName
+        return this._fullName;  
     }
-    get accountNumber() {
+    get accountNumber() {                           // to jest getter klasy Person ktory zwraca accpuntNumber ale po modyfikacjach!! :) np. console --> person1.accountNumber
         return this._accountNumber.replace(this._accountNumber.slice(2, 22), ' **** **** **** **** ***** ');
     }
-    set accountNumber(newParam) {
+    set accountNumber(newParam) {                   // to jest setter klasy Person ktory ustawia accountNumber      
         this._accountNumber = newParam;
     }
 }
 
 const peopleList = [
-    new Person('Michal', '21458154914231425142540004'),
+    new Person('Michal', '21458154914231425142540004'),             // dodaje dwie persony do peopleList
     new Person('Karol', '12145815491423142514254784')
 ]
 
 
 
 class Render {
-    static renderList(listToRender, elementToRender) {
+    static renderList(listToRender, elementToRender) {                 // 
         const lol = document.getElementById(elementToRender);
         listToRender.map((currentElement) => {
             lol.innerHTML += `<div> Imię i nazwisko: ${currentElement.fullName} || Numer konta: ${currentElement.accountNumber} </div>`
