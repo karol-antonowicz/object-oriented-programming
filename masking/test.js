@@ -1,3 +1,5 @@
+/*
+
 // lsita osob w raz z numerami kont bankowych
 // full name i account umber
 
@@ -76,7 +78,37 @@ divDisplay.appendChild(makeSection).classList.add('account')              // cre
 document.getElementsByClassName('account')[0].innerHTML = output 
 
 
+*/
+class Person {
+    constructor(fullName, accountNumber) {
+        this._fullName = fullName;
+        this._accountNumber = accountNumber;
+    }
+    get fullName() {
+        return this._fullName;
+    }
+    get accountNumber() {
+        return this._accountNumber.replace(this._accountNumber.slice(2, 22), ' **** **** **** **** ***** ');
+    }
+    set accountNumber(newParam) {
+        this._accountNumber = newParam;
+    }
+}
+
+const peopleList = [
+    new Person('Michal', '21458154914231425142540004'),
+    new Person('Karol', '12145815491423142514254784')
+]
 
 
 
+class Render {
+    static renderList(listToRender, elementToRender) {
+        const lol = document.getElementById(elementToRender);
+        listToRender.map((currentElement) => {
+            lol.innerHTML += `<div> Imię i nazwisko: ${currentElement.fullName} || Numer konta: ${currentElement.accountNumber} </div>`
+        })
+    }
+}
 
+Render.renderList(peopleList, 'list')
